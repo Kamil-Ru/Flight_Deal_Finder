@@ -17,6 +17,9 @@ for row in data:
 
     local_data = new_search.search_connection(city_iata, row["lowestPrice"])
     pprint(local_data)
-    notification = NotificationManager(local_data)
 
-    notification.send_message()
+    try:
+        notification = NotificationManager(local_data)
+        notification.send_emails("Asysh1986@gmail.com")
+    except IndexError:
+        continue
